@@ -1,0 +1,67 @@
+<?php
+
+// include "session.php";
+if (!isset($_SESSION)) {
+    session_start();
+}
+include "../database/account_class.php";
+include "sidenav.php";
+include "topheader.php";
+
+$error_login = 0;
+if (isset($_POST["btn_login"])) {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    $account = new account();
+    $result = $account->checkLoginAdmin($email, $password);
+    if ($result == 1) {
+        $_SESSION["user"] = $email;
+        echo "<script> window.location.href ='index.php'; </script>";
+    } else {
+        $error_login = 1;
+    }
+}
+?>
+
+
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="p-5">
+                                <?php if ($error_login == 1) {
+                                    echo "<div class='alert alert-danger'>Tài khoản hoặc mật khẩu sai!</div>";
+                                } ?>
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                </div>
+                                <form class="user" method="POST">
+                                    <div class="form-group">
+                                        <input type="text" name="email" class="form-control form-control-user"
+                                            id="exampleInputUsername" placeholder="Enter Email...">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Enter Password">
+                                    </div>
+                                    <button type="submit" class="bbtn btn-primary btn-user btn-block"
+                                        name="btn_login">Login</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
+include "footer.php";
+?>
