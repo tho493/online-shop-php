@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 22, 2023 lúc 09:37 AM
--- Phiên bản máy phục vụ: 8.0.30
--- Phiên bản PHP: 8.1.10
+-- Host: localhost:3306
+-- Generation Time: Mar 11, 2024 at 01:26 PM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,12 +18,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `online-shop`
+-- Database: `online-shop`
 --
 
 DELIMITER $$
 --
--- Thủ tục
+-- Procedures
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getcat` (IN `cid` INT)   SELECT * FROM categories WHERE cat_id=cid$$
 
@@ -32,7 +32,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin_info`
+-- Table structure for table `admin_info`
 --
 
 CREATE TABLE `admin_info` (
@@ -43,7 +43,7 @@ CREATE TABLE `admin_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `admin_info`
+-- Dumping data for table `admin_info`
 --
 
 INSERT INTO `admin_info` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `admin_info` (`admin_id`, `admin_name`, `admin_email`, `admin_passwo
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `brands`
+-- Table structure for table `brands`
 --
 
 CREATE TABLE `brands` (
@@ -61,7 +61,7 @@ CREATE TABLE `brands` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `brands`
+-- Dumping data for table `brands`
 --
 
 INSERT INTO `brands` (`brand_id`, `brand_title`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `brands` (`brand_id`, `brand_title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `cart`
+-- Table structure for table `cart`
 --
 
 CREATE TABLE `cart` (
@@ -86,7 +86,7 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `cart`
+-- Dumping data for table `cart`
 --
 
 INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`, `qty`) VALUES
@@ -95,7 +95,7 @@ INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`, `qty`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -104,7 +104,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
@@ -116,7 +116,7 @@ INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `orders_info`
+-- Table structure for table `orders_info`
 --
 
 CREATE TABLE `orders_info` (
@@ -137,7 +137,7 @@ CREATE TABLE `orders_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `orders_info`
+-- Dumping data for table `orders_info`
 --
 
 INSERT INTO `orders_info` (`order_id`, `user_id`, `f_name`, `email`, `address`, `city`, `state`, `zip`, `cardname`, `cardnumber`, `expdate`, `prod_count`, `total_amt`, `cvv`) VALUES
@@ -147,7 +147,7 @@ INSERT INTO `orders_info` (`order_id`, `user_id`, `f_name`, `email`, `address`, 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `order_products`
+-- Table structure for table `order_products`
 --
 
 CREATE TABLE `order_products` (
@@ -159,7 +159,7 @@ CREATE TABLE `order_products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `order_products`
+-- Dumping data for table `order_products`
 --
 
 INSERT INTO `order_products` (`order_pro_id`, `order_id`, `product_id`, `qty`, `amt`) VALUES
@@ -170,7 +170,7 @@ INSERT INTO `order_products` (`order_pro_id`, `order_id`, `product_id`, `qty`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -186,7 +186,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_title`, `product_price`, `product_desc`, `product_details`, `product_image`, `product_keywords`) VALUES
@@ -219,7 +219,7 @@ INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_t
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user_info`
+-- Table structure for table `user_info`
 --
 
 CREATE TABLE `user_info` (
@@ -234,49 +234,49 @@ CREATE TABLE `user_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `user_info`
+-- Dumping data for table `user_info`
 --
 
 INSERT INTO `user_info` (`user_id`, `first_name`, `last_name`, `email`, `password`, `mobile`, `address1`, `address2`) VALUES
 (1, 'chi', 'tho', 'tho493@gmail.com', 'tho493', '3859250', 'saodo', 'haiduong');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `admin_info`
+-- Indexes for table `admin_info`
 --
 ALTER TABLE `admin_info`
   ADD PRIMARY KEY (`admin_id`);
 
 --
--- Chỉ mục cho bảng `brands`
+-- Indexes for table `brands`
 --
 ALTER TABLE `brands`
   ADD PRIMARY KEY (`brand_id`);
 
 --
--- Chỉ mục cho bảng `cart`
+-- Indexes for table `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`cat_id`);
 
 --
--- Chỉ mục cho bảng `orders_info`
+-- Indexes for table `orders_info`
 --
 ALTER TABLE `orders_info`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Chỉ mục cho bảng `order_products`
+-- Indexes for table `order_products`
 --
 ALTER TABLE `order_products`
   ADD PRIMARY KEY (`order_pro_id`),
@@ -284,81 +284,81 @@ ALTER TABLE `order_products`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Chỉ mục cho bảng `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`);
 
 --
--- Chỉ mục cho bảng `user_info`
+-- Indexes for table `user_info`
 --
 ALTER TABLE `user_info`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `admin_info`
+-- AUTO_INCREMENT for table `admin_info`
 --
 ALTER TABLE `admin_info`
   MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `brands`
+-- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
   MODIFY `brand_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT cho bảng `cart`
+-- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
--- AUTO_INCREMENT cho bảng `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `cat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT cho bảng `orders_info`
+-- AUTO_INCREMENT for table `orders_info`
 --
 ALTER TABLE `orders_info`
   MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT cho bảng `order_products`
+-- AUTO_INCREMENT for table `order_products`
 --
 ALTER TABLE `order_products`
   MODIFY `order_pro_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
--- AUTO_INCREMENT cho bảng `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT cho bảng `user_info`
+-- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
   MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `orders_info`
+-- Constraints for table `orders_info`
 --
 ALTER TABLE `orders_info`
   ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user_info` (`user_id`);
 
 --
--- Các ràng buộc cho bảng `order_products`
+-- Constraints for table `order_products`
 --
 ALTER TABLE `order_products`
   ADD CONSTRAINT `order_products` FOREIGN KEY (`order_id`) REFERENCES `orders_info` (`order_id`) ON UPDATE CASCADE,
